@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Verify GitHub CLI authentication
+        env:
+          GH_TOKEN: ${{ secrets.PRIVATE_TOKEN }}
+        run: gh auth status
+
       - uses: actions/checkout@v4
         with: 
           repository: ${{ vars.PARENT_ORG }}/${{ vars.PARENT_REPO }}
