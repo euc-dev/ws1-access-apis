@@ -27,6 +27,10 @@
       "name": "oauth2"
     },
     {
+      "name": "oauth2Admin",
+      "description": "Endpoints for managing OAuth 2.0 clients."
+    },
+    {
       "name": "scim"
     },
     {
@@ -592,13 +596,13 @@
           "login"
         ],
         "summary": "OAuth 2.0 authorization endpoint",
-        "description": "This is the starting point of the OAuth 2.0 flow to authenticate end users from your application.This authorization endpoint complies with the OAuth 2.0 specifications and must be used by clients to authenticate users and obtain an authorization code. To use this endpoint, your application must be registered as an OAuth 2.0 client in Workspace ONE Access and have the 'authorization_code' grant type enabled.",
+        "description": "This is the starting point of the OAuth 2.0 flow to authenticate end users from your application.This authorization endpoint complies with the OAuth 2.0 specifications and must be used by clients to authenticate users and obtain an authorization code. To use this endpoint, your application must be registered as an OAuth 2.0 client in Omnissa Access and have the 'authorization_code' grant type enabled.",
         "operationId": "get-doOAuth2Authorize",
         "parameters": [
           {
             "name": "redirect_uri",
             "in": "query",
-            "description": "Specifies the callback endpoint in your application that will receive the authorization code. It must match the redirect_uri defined in your OAuth2.0 client registration in Workspace ONE Access. When sending the redirect_uri as a URL parameter it has to be URL encoded.",
+            "description": "Specifies the callback endpoint in your application that will receive the authorization code. It must match the redirect_uri defined in your OAuth2.0 client registration in Omnissa Access. When sending the redirect_uri as a URL parameter it has to be URL encoded.",
             "required": true,
             "schema": {
               "type": "string"
@@ -608,7 +612,7 @@
           {
             "name": "client_id",
             "in": "query",
-            "description": "This is the identifier of the OAuth 2.0 client that was registered in Workspace ONE Access.",
+            "description": "This is the identifier of the OAuth 2.0 client that was registered in Omnissa Access.",
             "required": true,
             "schema": {
               "type": "string"
@@ -646,7 +650,7 @@
           {
             "name": "domain",
             "in": "query",
-            "description": "Specifies the user's domain. If this parameter is specified, the login screen will skip the domain selection page. This can be used when it is known that a single domain is used or the domain information can be inferred automatically (from the username for example).This is a Workspace ONE Access optional parameter and is not in the OAuth 2.0 specification. ",
+            "description": "Specifies the user's domain. If this parameter is specified, the login screen will skip the domain selection page. This can be used when it is known that a single domain is used or the domain information can be inferred automatically (from the username for example).This is a Omnissa Access optional parameter and is not in the OAuth 2.0 specification. ",
             "schema": {
               "type": "string"
             }
@@ -654,7 +658,7 @@
           {
             "name": "u",
             "in": "query",
-            "description": "Specifies the user's login. In case your application already knows what user is going to login, and Workspace ONE Access will have to pass this user to a third-party IdP, then adding this parameter will send the username as part of the SAML request. This is a Workspace ONE Access optional parameter and is not in the OAuth 2.0 specification.",
+            "description": "Specifies the user's login. In case your application already knows what user is going to login, and Omnissa Access will have to pass this user to a third-party IdP, then adding this parameter will send the username as part of the SAML request. This is a Omnissa Access optional parameter and is not in the OAuth 2.0 specification.",
             "schema": {
               "type": "string"
             }
@@ -995,7 +999,7 @@
           {
             "name": "grant_type",
             "in": "query",
-            "description": "Specifies the OAuth grant type the client is making. Workspace ONE Access supports the following grant types from the OAuth specifications: authorization_code, password, client_credentials, and refresh_token. Workspace ONE Access also supports the grant type urn:ietf:params:oauth:grant-type:jwt-bearer for using JWTs for authorization as described in the JWT Bearer Token Profiles for OAuth 2.0 specifications.",
+            "description": "Specifies the OAuth grant type the client is making. Omnissa Access supports the following grant types from the OAuth specifications: authorization_code, password, client_credentials, and refresh_token. Omnissa Access also supports the grant type urn:ietf:params:oauth:grant-type:jwt-bearer for using JWTs for authorization as described in the JWT Bearer Token Profiles for OAuth 2.0 specifications.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1101,7 +1105,7 @@
           "oidc"
         ],
         "summary": "Retrieve the public key to validate a token or check the given access token",
-        "description": "This endpoint allows applications to validate the access token issued by Workspace ONE Access, and to retrieve the public key used to sign the token.",
+        "description": "This endpoint allows applications to validate the access token issued by Omnissa Access, and to retrieve the public key used to sign the token.",
         "operationId": "get-getTokenAttribute",
         "parameters": [
           {
@@ -1215,7 +1219,7 @@
           {
             "name": "app_product_id",
             "in": "query",
-            "description": "Specifies the name of the template that was registered with Workspace ONE Access.",
+            "description": "Specifies the name of the template that was registered with Omnissa Access.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1255,7 +1259,7 @@
           {
             "name": "redirect_uri",
             "in": "query",
-            "description": "Specifies the callback endpoint in your application that will receive the authorization code. It must match the redirect_uri defined in the pre-created template in Workspace ONE Access. When sending the redirect_uri as a URL parameter it has to be URL encoded.",
+            "description": "Specifies the callback endpoint in your application that will receive the authorization code. It must match the redirect_uri defined in the pre-created template in Omnissa Access. When sending the redirect_uri as a URL parameter it has to be URL encoded.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1293,7 +1297,7 @@
             }
           },
           "302": {
-            "description": "Workspace ONE Access will redirect to the specified redirect_uri. The redirect URL will contain 'error' and 'error_description' query parameters if there is an error: the response_type is invalid or missing, the specified scope is unknown. Otherwise the redirect URL will contain the state, the activation code and the authorization code to exchange respectively in the activation and authorization subsequent requests.",
+            "description": "Omnissa Access will redirect to the specified redirect_uri. The redirect URL will contain 'error' and 'error_description' query parameters if there is an error: the response_type is invalid or missing, the specified scope is unknown. Otherwise the redirect URL will contain the state, the activation code and the authorization code to exchange respectively in the activation and authorization subsequent requests.",
             "content": {}
           },
           "400": {
@@ -1315,7 +1319,7 @@
           {
             "name": "app_product_id",
             "in": "query",
-            "description": "Specifies the name of the template that was registered with Workspace ONE Access.",
+            "description": "Specifies the name of the template that was registered with Omnissa Access.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1355,7 +1359,7 @@
           {
             "name": "redirect_uri",
             "in": "query",
-            "description": "Specifies the callback endpoint in your application that will receive the authorization code. It must match the redirect_uri defined in the pre-created template in Workspace ONE Access. When sending the redirect_uri as a URL parameter it has to be URL encoded.",
+            "description": "Specifies the callback endpoint in your application that will receive the authorization code. It must match the redirect_uri defined in the pre-created template in Omnissa Access. When sending the redirect_uri as a URL parameter it has to be URL encoded.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1393,7 +1397,7 @@
             }
           },
           "302": {
-            "description": "Workspace ONE Access will redirect to the specified redirect_uri. The redirect URL will contain 'error' and 'error_description' query parameters if there is an error: the response_type is invalid or missing, the specified scope is unknown. Otherwise the redirect URL will contain the state, the activation code and the authorization code to exchange respectively in the activation and authorization subsequent requests.",
+            "description": "Omnissa Access will redirect to the specified redirect_uri. The redirect URL will contain 'error' and 'error_description' query parameters if there is an error: the response_type is invalid or missing, the specified scope is unknown. Otherwise the redirect URL will contain the state, the activation code and the authorization code to exchange respectively in the activation and authorization subsequent requests.",
             "content": {}
           },
           "400": {
@@ -1982,11 +1986,86 @@
           "oauth2"
         ],
         "summary": "List existing OAuth 2.0 clients",
-        "description": "This endpoint is used to read the list of OAuth 2.0 clients Workspace ONE Access has registered.",
-        "operationId": "get-getOAuth2ClientSummaryList",
+        "description": "List existing OAuth 2.0 clients registered with Omnissa Access. Returns a summary for each client.",
+        "operationId": "getOAuth2ClientSummaryList",
+        "parameters": [
+          {
+            "name": "startIndex",
+            "in": "query",
+            "description": "The index of the page. Pages start with index 1.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of results per page.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50
+            },
+            "example": 50
+          },
+          {
+            "name": "userDeviceId",
+            "in": "query",
+            "description": "The user deviceId on which to filter out the OAuth2Clients",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filterInternal",
+            "in": "query",
+            "description": "When set to true, Filters out internal clients in the tenant",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "fingerprintNetworkRange",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Column to use for sorting",
+            "schema": {
+              "type": "string"
+            },
+            "example": "modifiedDate"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Ascending(asc)/Descending(desc) order",
+            "schema": {
+              "type": "string"
+            },
+            "example": "asc"
+          },
+          {
+            "name": "appProductId",
+            "in": "query",
+            "description": "Name of the OAuth2 App Template",
+            "schema": {
+              "type": "string"
+            },
+            "example": "GreenBox-TemplateId"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "successful operation",
+            "description": "OAuth2 Clients returned successfully.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1994,15 +2073,11 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": "Forbidden to get OAuth2 Clients"
           }
-        },
-        "security": [
-          {
-            "oauth2": [
-              "admin"
-            ]
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -2010,7 +2085,7 @@
           "oauth2"
         ],
         "summary": "Create a new OAuth 2.0 client",
-        "description": "This endpoint is used to define a new OAuth2 Client on Workspace ONE Access. An OAuth2 Client can be a Service Client('client credentials' OAuth2 grant type), or a User Client('authorization_code' or 'password' OAuth2 grant types). This definition will enable a service or its users to authenticate to Workspace ONE Access using the OAuth2 protocol.",
+        "description": "This endpoint is used to define a new OAuth2 Client on Omnissa Access. An OAuth2 Client can be a Service Client('client credentials' OAuth2 grant type), or a User Client('authorization_code' or 'password' OAuth2 grant types). This definition will enable a service or its users to authenticate to Omnissa Access using the OAuth2 protocol.",
         "operationId": "post-createGenericOAuth2Client",
         "responses": {
           "201": {
@@ -2079,7 +2154,7 @@
           {
             "name": "subjectId",
             "in": "path",
-            "description": "The ID of the user or group to which the catalog item is entitled. This is usually the Workspace ONE Access UUID and not an external ID.",
+            "description": "The ID of the user or group to which the catalog item is entitled. This is usually the Omnissa Access UUID and not an external ID.",
             "required": true,
             "schema": {
               "type": "string"
@@ -2241,7 +2316,7 @@
           {
             "name": "subjectId",
             "in": "path",
-            "description": "The user or group ID to which the catalog item is entitled. This is the Workspace ONE Access UUID and not an external ID.",
+            "description": "The user or group ID to which the catalog item is entitled. This is the Omnissa Access UUID and not an external ID.",
             "required": true,
             "schema": {
               "type": "string"
@@ -2480,7 +2555,7 @@
           "oauth2"
         ],
         "summary": "View an existing OAuth 2.0 client",
-        "description": "This endpoint is used to get full details of a registered OAuth 2.0 Client on Workspace ONE Access",
+        "description": "This endpoint is used to get full details of a registered OAuth 2.0 Client on Omnissa Access",
         "operationId": "get-getOAuth2Client",
         "parameters": [
           {
@@ -2850,7 +2925,7 @@
           },
           "catalogItemType": {
             "type": "string",
-            "description": "The specific catalog item type (used for application launch by Workspace ONE Access)",
+            "description": "The specific catalog item type (used for application launch by Omnissa Access)",
             "readOnly": true,
             "example": "Saml20",
             "enum": [
@@ -2979,13 +3054,13 @@
           },
           "internalSystemClient": {
             "type": "boolean",
-            "description": "When set to true, OAuth2 Client will become undeletable from the Workspace ONE Access Admin UI. Default is 'false'",
+            "description": "When set to true, OAuth2 Client will become undeletable from the Omnissa Access Admin UI. Default is 'false'",
             "example": false,
             "default": false
           },
           "secret": {
             "type": "string",
-            "description": "The OAuth 2.0 Client secret (a string provided by an admin or a Workspace ONE Access auto-generated string). If secret string not provided, an auto-generated secret will be returned. Secret field is mandatory in Authorization Code and Client Credentials Grant flows. If the secret field is omitted or left blank in Resource Owner grant flow, no secret will be required to authenticate the client",
+            "description": "The OAuth 2.0 Client secret (a string provided by an admin or a Omnissa Access auto-generated string). If secret string not provided, an auto-generated secret will be returned. Secret field is mandatory in Authorization Code and Client Credentials Grant flows. If the secret field is omitted or left blank in Resource Owner grant flow, no secret will be required to authenticate the client",
             "example": "my-auth-grant-client1-secret"
           },
           "refreshTokenTTL": {
@@ -3009,7 +3084,7 @@
           },
           "resourceUuid": {
             "type": "string",
-            "description": "UUID of a Workspace ONE Access application. Only users who are entitled to this application will be able to authenticate via this client.",
+            "description": "UUID of a Omnissa Access application. Only users who are entitled to this application will be able to authenticate via this client.",
             "format": "uuid",
             "example": "9e70bee8-3a55-4413-8418-454e7278093e"
           },
@@ -3175,7 +3250,7 @@
           },
           "parents": {
             "type": "array",
-            "description": "The list of group parents if available. The groups can be nested and Workspace ONE Access will return the full hierarchy",
+            "description": "The list of group parents if available. The groups can be nested and Omnissa Access will return the full hierarchy",
             "items": {
               "$ref": "#/components/schemas/EntryString"
             }
@@ -3574,7 +3649,7 @@
         "properties": {
           "access_token": {
             "type": "string",
-            "description": "The requested access token. This token can now be used to call Workspace ONE Access APIs. For example, with the 'Bearer' token type, use 'Bearer &lt;this access token value&gt;' as the 'Authorization' header. The access token is a <a href=\"https://jwt.io/\">JSON web token</a> (JWT).",
+            "description": "The requested access token. This token can now be used to call Omnissa Access APIs. For example, with the 'Bearer' token type, use 'Bearer &lt;this access token value&gt;' as the 'Authorization' header. The access token is a <a href=\"https://jwt.io/\">JSON web token</a> (JWT).",
             "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9xxxxHVcA76zjsGN2w..."
           },
           "token_type": {
@@ -3604,32 +3679,88 @@
       "OAuth2ClientSummary": {
         "type": "object",
         "properties": {
+          "clientId": {
+            "type": "string",
+            "description": "The client identifier of this OAuth 2.0 client",
+            "example": "\"oauth_clientid\""
+          },
           "scope": {
             "type": "string",
             "description": "The scope of this OAuth 2.0 client",
-            "example": "admin"
+            "example": "\"admin\""
           },
-          "rememberAs": {
+          "isActivated": {
+            "type": "boolean",
+            "description": "Indicates if the OAuth 2.0 client has been activated.",
+            "readOnly": true,
+            "example": false
+          },
+          "pkceEnforced": {
+            "type": "boolean",
+            "description": "Indicates if PKCE is enforced for the OAuth 2.0 client",
+            "readOnly": true,
+            "example": false
+          },
+          "grantTypes": {
             "type": "string",
-            "description": "The human friendly name of this OAuth 2.0 client",
-            "example": "my oauth client"
+            "description": "The grants of this OAuth 2.0 client",
+            "example": "\"authorization_code password\""
+          },
+          "accessTokenTTL": {
+            "type": "integer",
+            "description": "how long in minutes new access tokens issued to this client should live",
+            "format": "int32",
+            "example": 180
+          },
+          "refreshTokenTTL": {
+            "type": "integer",
+            "description": "how long in minutes new refresh tokens issued to this client should live. Only applicable if authGrantTypes includes \"refresh_token\".",
+            "format": "int32",
+            "example": 360
+          },
+          "refreshTokenIdleTTL": {
+            "type": "integer",
+            "description": "how long in minutes new refresh tokens issued to this client can be idle. Only applicable if authGrantTypes includes \"refresh_token\". Its value should be less than the refresh token TTL value",
+            "format": "int32",
+            "example": 180
+          },
+          "displayUserGrant": {
+            "type": "boolean",
+            "description": "indicates whether to display grant page to user or not. If the value is set to false, then access is granted to clients according to org policy without asking user",
+            "example": false
+          },
+          "redirectUri": {
+            "type": "string",
+            "description": "space/comma separated list of absolute URIs of application endpoints that are allowed to receive the authorization code and access token. The redirect_uri sent by the application as part of the Authorization Code Grant Oauth 2.0 flow is verified against this list. A Wildcard can be substituted for any string to skip the check for a particular URL section",
+            "example": "\"https://*.hostname1.com/auth/* https://*.hostname2.com/auth/*\""
+          },
+          "publicClient": {
+            "type": "boolean",
+            "description": "Indicates if he OAuth 2.0 client is a public client without client_secret",
+            "example": false
+          },
+          "internal": {
+            "type": "boolean",
+            "description": "Indicates if the OAuth 2.0 client is internal or not.",
+            "example": false
           },
           "_links": {
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/Link"
             },
-            "readOnly": true
+            "description": "The resource HATEOAS links. Usually includes a \"self\" link for this resource",
+            "readOnly": true,
+            "example": {
+              "self": {
+                "href": "https://example.com/path-to-self"
+              }
+            }
           },
-          "mediaType": {
+          "rememberAs": {
             "type": "string",
-            "description": "Defines the media type of this OAuth 2.0 client (Client Credentials type or Classic type)",
-            "example": "application/json"
-          },
-          "clientId": {
-            "type": "string",
-            "description": "The client identifier of this OAuth 2.0 client",
-            "example": "oauth_clientid"
+            "description": "The human friendly name of this OAuth 2.0 client",
+            "example": "\"my oauth client\""
           }
         },
         "description": "An OAuth 2.0 client object"
@@ -4209,24 +4340,52 @@
         }
       },
       "OAuth2ClientSummaryList": {
+        "required": [
+          "items"
+        ],
         "type": "object",
         "properties": {
           "items": {
             "type": "array",
-            "description": "The list of items in the current page",
             "items": {
               "$ref": "#/components/schemas/OAuth2ClientSummary"
             }
+          },
+          "totalCount": {
+            "type": "integer",
+            "description": "Count of total number of elements for the request",
+            "format": "int32"
+          },
+          "pageNumber": {
+            "type": "integer",
+            "description": "Current page number",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "description": "Total number of pages for the request",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "Number of elements returned per page",
+            "format": "int32"
           },
           "_links": {
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/Link"
             },
-            "readOnly": true
+            "description": "The resource HATEOAS links. Usually includes a \"self\" link for this resource",
+            "readOnly": true,
+            "example": {
+              "self": {
+                "href": "https://example.com/path-to-self"
+              }
+            }
           }
         },
-        "description": "The list of OAuth 2.0 clients"
+        "description": "The list of OAuth 2.0 client Summaries"
       },
       "WorkspaceSchemaRoleAttributes": {
         "type": "object",
@@ -4343,7 +4502,7 @@
     "securitySchemes": {
       "oauth2": {
         "type": "oauth2",
-        "description": "The OAuth2.0 authentication scheme to access all APIs. Workspace ONE Access supports 'Authorization Code', 'Resource Owner Password Credentials' and 'Client Credentials' as defined by the OAuth 2.0 spec.",
+        "description": "The OAuth2.0 authentication scheme to access all APIs. Omnissa Access supports 'Authorization Code', 'Resource Owner Password Credentials' and 'Client Credentials' as defined by the OAuth 2.0 spec.",
         "flows": {
           "authorizationCode": {
             "authorizationUrl": "/SAAS/auth/oauth2/authorize",
