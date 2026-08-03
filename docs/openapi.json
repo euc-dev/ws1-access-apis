@@ -27,10 +27,6 @@
       "name": "oauth2"
     },
     {
-      "name": "oauth2Admin",
-      "description": "Endpoints for managing OAuth 2.0 clients."
-    },
-    {
       "name": "scim"
     },
     {
